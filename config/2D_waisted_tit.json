@@ -1,0 +1,13 @@
+{
+	"total_steps": 400,
+	"action": "open",
+    "dimensions": "2D",
+	"element": "tri",
+	"body_type": "surface",
+    "target_ID" : "14 1 23",
+	"material": "titanium",
+	"setup": [],
+	"geometry": "open fds 'C:/Archive/Work/ICAD/2024/modeling/fidesys_projects/waisted_2D.fds'",
+	"mesh": [],
+	"boundary_conditions": []
+}

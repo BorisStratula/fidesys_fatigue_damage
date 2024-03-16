@@ -1,0 +1,25 @@
+{
+	"total_steps": 5,
+	"action": "import",
+	"dimensions": "3D",
+	"element": "tet",
+	"body_type": "volume",
+	"target_ID": "1",
+	"material": "titanium",
+	"setup": [
+		"analysis type static elasticity dim3",
+		"solver method direct use_uzawa auto try_other off",
+		"output nodalforce off energy off midresults off record3d off material on modelprops off without_smoothing off trackingforce off fullperiodic off"
+	],
+	"geometry": "import parasolid \"C:/Archive/Work/ICAD/2023/modeling/Experiments/02/Specimen.x_t\"  nofreesurfaces attributes_on separate_bodies",
+	"mesh": [
+		"volume 1 scheme tetmesh",
+		"volume 1 size auto factor 5",
+		"mesh volume 1"
+	],
+	"boundary_conditions": [
+		"create displacement on surface 6 dof all fix 0",
+		"create displacement on surface 2 dof 1 dof 3 dof 4 dof 5 dof 6 fix 0",
+		"modify displacement 2 dof 2 fix 2e-5"
+	]
+}

@@ -1,0 +1,21 @@
+[
+    {
+        "name" : "titanium",
+        "E" : 1.15e+11,
+        "nu" : 0.37,
+        "beta_VH" : 0.3,
+        "beta_LH" : 0.277,
+        "sigma_B" : 1600e6,
+        "sigma_U" :  700e6,
+        "sigma_UT" : 400e6
+    },
+    {
+        "name" : "steel"
+    },
+    {
+        "name" : "aluminum"
+    },
+    {
+        "name" : "abs"
+    }
+]
