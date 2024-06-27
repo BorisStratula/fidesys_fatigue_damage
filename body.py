@@ -7,6 +7,8 @@ class Body:
     elem_verteces = []
     elem_ID = []
     elem_E = []
+    elem_initial_E = []
+    elem_initial_nu = []
     nodal_coords = []
     block_ID = []
     material_ID = []
@@ -47,6 +49,8 @@ class Body:
             Body.block_ID.append(0)
             Body.material_ID.append(0)
             Body.elem_E.append(0)
+            Body.elem_initial_E.append(0)
+            Body.elem_initial_nu.append(0)
 
     def create_first_block(fidesys, constants, fidesys_config):
         target_ID = fidesys_config.target_ID
@@ -57,7 +61,20 @@ class Body:
             Body.elem_ID[elem] = elem + 1
             Body.block_ID[elem] = first_vacant_elem_ID
             Body.elem_E[elem] = constants.E
+            Body.elem_initial_E[elem] = constants.E
+            Body.elem_initial_nu[elem] = constants.nu
         Body.material_ID = Body.block_ID
+        # experiment with inclusion
+        #defect_elems = [32, 11, 9, 53, 154, 229, 91, 205, 197]
+        defect_elems = [12, 41, 55, 98, 188, 114, 92, 246, 192, 534, 590, 562, 620, 625, 653, 717, 716, 209]
+        for elem in defect_elems:
+            E = constants.E * 1.20
+            nu = constants.nu
+            Body.elem_initial_E[elem] = E
+            Body.elem_initial_nu[elem] = nu
+            Body.elem_is_modified[elem] = 1
+            Body.move_elem_into_new_block(elem + 1, fidesys, fidesys_config, E, nu)
+            Body.modify_material(fidesys, elem + 1, E, nu)
 
     def add_boundary_conditions(fidesys, fidesys_config):
         boundary_conditions = fidesys_config.boundary_conditions
@@ -90,9 +107,11 @@ class Body:
                 Body.make_node_damage_negative(model_data, node)
 
     def modify_elem_material(constants, fidesys, fidesys_config):
-        E = constants.E
-        nu = constants.nu
+        #E = constants.E
+        #nu = constants.nu
         for elem in range(0, Body.total_elems):
+            E = Body.elem_initial_E[elem]
+            nu = Body.elem_initial_nu[elem]
             if Body.elem_is_dead[elem] == 1:
                 continue
             if constants.psi_start >= Body.elem_psi[elem]:
@@ -113,6 +132,8 @@ class Body:
             return cubit.get_tet_count()
         if elem_type == 'tri':
             return cubit.get_tri_count()
+        if elem_type == 'map':
+            return cubit.get_quad_count()
         print('unknown element type in get_elem_count')
         exit()
         
@@ -152,6 +173,8 @@ class Body:
             meshio_element = 'tetra'
         if element == 'tri':
             meshio_element = 'triangle'
+        if element == 'map':
+            meshio_element = 'quad'
         if meshio_element == 0:
             print('element type is not specified for meshio')
             exit()

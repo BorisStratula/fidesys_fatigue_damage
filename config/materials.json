@@ -17,5 +17,15 @@
     },
     {
         "name" : "abs"
+    },
+    {
+        "name" : "golubev",
+        "E" : 1.16e+11,
+        "nu" : 0.32,
+        "beta_VH" : 0.31,
+        "beta_LH" : 0.27,
+        "sigma_B" : 1160e6,
+        "sigma_U" :  350e6,
+        "sigma_UT" : 260e6
     }
 ]

@@ -19,7 +19,7 @@ class Constants:
     psi_twist   = 0.95
     E_dead = 1e-6
     gamma = 0.1
-    R = 0
+    R = -1
     psi_power = 1
     step_threshold = 0.95
     step_multiplier = 0.5

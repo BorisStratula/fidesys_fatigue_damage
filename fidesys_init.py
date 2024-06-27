@@ -68,6 +68,12 @@ class Cubit:
     def get_tri_count() -> int:
         return Cubit._workaround.get_tri_count()
     
+    def get_quad_count() -> int:
+        return Cubit._workaround.get_quad_count()
+    
+    def get_surface_element_count() -> int:
+        return Cubit._workaround.get_surface_element_count()
+    
     def get_nodal_coordinates(ID: int):
         return Cubit._workaround.get_nodal_coordinates(ID)
 

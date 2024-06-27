@@ -1,0 +1,13 @@
+{
+	"total_steps": 120,
+	"action": "open",
+    "dimensions": "2D",
+	"element": "tri",
+	"body_type": "surface",
+    "target_ID" : "6 11",
+	"material": "titanium",
+	"setup": [],
+	"geometry": "open fds 'C:/Archive/Work/ICAD/2024/modeling/fidesys_slm/fidesys_quarter_mesh.fds'",
+	"mesh": [],
+	"boundary_conditions": []
+}

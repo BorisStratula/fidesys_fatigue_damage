@@ -1,0 +1,13 @@
+{
+	"total_steps": 200,
+	"action": "open",
+    "dimensions": "3D",
+	"element": "tet",
+	"body_type": "volume",
+    "target_ID" : "1",
+	"material": "golubev",
+	"setup": [],
+	"geometry": "open fds 'C:/Archive/Work/ICAD/2024/modeling/golubev/fidesys01.fds'",
+	"mesh": [],
+	"boundary_conditions": []
+}
