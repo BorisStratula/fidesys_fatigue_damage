@@ -5,7 +5,8 @@ class Fidesys:
     _workaround = 0
     _fidesys_component = 0
     def init():
-        fidesys_path = r'C:\Program Files\Fidesys\CAE-Fidesys-6.1' # Расположение Фидесиса
+        # fidesys_path = r'C:\Program Files\Fidesys\CAE-Fidesys-6.1' # Расположение Фидесиса
+        fidesys_path = r'C:\Program Files\Fidesys\CAE-Fidesys-7.0' # Расположение Фидесиса
         prep_paths = [os.path.join(fidesys_path, 'preprocessor', 'bin'),
                          os.path.join(fidesys_path, 'preprocessor', 'bin', 'plugins'),
                          os.path.join(fidesys_path, 'preprocessor', 'bin', 'acis', 'code', 'bin'),
